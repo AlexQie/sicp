@@ -124,3 +124,11 @@
   (cond ((= n 1) f)
         ((= (remainder n 2) 0) (repeat (compose f f) (/ n 2)))
         (else (compose f (repeat (compose f f) (/ n 2))))))
+
+;excise 1.44
+(define (smooth f)
+  (lambda (x) (/ (+ (f (+ x dx)) (f x) (f (- x dx)))
+                 3)))
+
+(define (smooth-n f n)
+  (repeat (smooth f) n))
