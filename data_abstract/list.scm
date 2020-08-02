@@ -47,3 +47,9 @@
 (define us-coins (list 50 10 5 1 25))
 
 (define uk-coins (list 100 50 20 10 5 2 1 0.5))
+
+;; excise 2.20
+(define (same-parity x . values)
+  (if (= (/ x 2) 0)
+      (filter (lambda (x) (= (remainder x 2) 0)) values)
+      (filter (lambda (x) (= (remainder x 2) 1)) values)))
