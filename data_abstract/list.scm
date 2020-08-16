@@ -49,7 +49,24 @@
 (define uk-coins (list 100 50 20 10 5 2 1 0.5))
 
 ;; excise 2.20
-(define (same-parity x . values)
-  (if (= (/ x 2) 0)
+(define (same-parity . values)
+  (if (= (/ (car values) 2) 0)
       (filter (lambda (x) (= (remainder x 2) 0)) values)
       (filter (lambda (x) (= (remainder x 2) 1)) values)))
+
+;; excise 2.21
+(define (square-list items)
+  (if (null? items)
+      ()
+      (cons (square (car items)) (square-list (cdr items)))))
+(define (square-list items)
+  (map (lambda (x) (square x)) items))
+
+;; excise 2.23
+(define (for-each proc items)
+  (if (null? items)
+      ()
+      (proc (car items)))
+  (if (null? items)
+      ()
+      (for-each proc (cdr items))))
